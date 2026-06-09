@@ -34,7 +34,7 @@ const About = () => {
     <div className="min-h-screen bg-black text-white">
       {/* Hero section with company logo */}
       <section className="relative w-full py-16 sm:py-24 md:py-32 bg-gradient-to-br from-gray-900 to-black">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
           <div className="mb-6 sm:mb-8 flex justify-center">
             <img 
               src="/static/logo.png" 
@@ -51,8 +51,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission & Vision cards (glassmorphism) */}
-      <section className="py-12 sm:py-16 container mx-auto px-6">
+      {/* Mission & Vision cards */}
+      <section className="py-12 sm:py-16 container mx-auto px-4 sm:px-6">
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-orange-500/30 hover:border-orange-500/50 transition-all">
             <i className="fas fa-bullseye text-orange-500 text-3xl sm:text-4xl mb-4"></i>
@@ -75,7 +75,7 @@ const About = () => {
 
       {/* Stats section */}
       <section className="py-12 bg-gradient-to-r from-orange-800 to-orange-600 text-white">
-        <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center max-w-4xl mx-auto">
+        <div className="container mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center max-w-4xl mx-auto">
           <div ref={customersRef}>
             <i className="fas fa-users text-3xl sm:text-4xl mb-3"></i>
             <h3 className="text-3xl sm:text-4xl font-bold">{customersCount}+</h3>
@@ -94,19 +94,19 @@ const About = () => {
         </div>
       </section>
 
-      {/* Why choose us – background image with overlay (logo7.jpg) */}
+      {/* Why choose us – background image with fallback */}
       <section 
         className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/static/logo7.jpg')" }}
+        style={{ 
+          backgroundImage: "url('/static/logo7.jpg')",
+          backgroundColor: '#1a1a1a' // fallback dark color
+        }}
       >
-        {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/60"></div>
-        
-        <div className="relative z-10 container mx-auto px-6">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
             Why Choose Same Day Mobile Solutions?
           </h2>
-          {/* Responsive grid: 1 column on phones, 2 on tablets, 3 on desktops */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
             {[
               { icon: "fas fa-truck-fast", title: "Free Pickup & Delivery", desc: "We come to your doorstep anywhere in Nairobi. No shop visit needed." },
@@ -130,7 +130,7 @@ const About = () => {
 
       {/* Journey / Timeline */}
       <section className="py-16 sm:py-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Journey</h2>
           <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-12 sm:mb-16">From a small workshop to Nairobi's most trusted repair service – our story is driven by passion for technology and customer care.</p>
           <div className="flex flex-wrap justify-center gap-6 sm:gap-8 max-w-5xl mx-auto">
@@ -153,7 +153,7 @@ const About = () => {
 
       {/* Call to action */}
       <section className="py-16 sm:py-20 bg-gradient-to-r from-orange-800 to-orange-600 text-white text-center">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to get your device repaired?</h2>
           <p className="text-base sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">One call, and we'll pick up your phone – repaired and returned within 24 hours.</p>
           <Link to="/booking" className="inline-block bg-white text-orange-700 px-6 sm:px-8 py-2 sm:py-3 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition shadow-lg">

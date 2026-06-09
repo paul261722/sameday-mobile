@@ -12,7 +12,7 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      {/* Hero section – responsive padding */}
+      {/* Hero section – responsive */}
       <section 
         className="relative w-full py-16 sm:py-24 md:py-32 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1592899677977-9e10ca588f9d?auto=format&fit=crop&w=2070&q=80')" }}
@@ -28,10 +28,13 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Services grid – background image (local) with dark overlay */}
+      {/* Services grid – background image with correct filename */}
       <section 
         className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/static/logo5.jpeg')" }}  // ✅ Fixed path: removed extra dot
+        style={{ 
+          backgroundImage: "url('/static/logo.5.jpeg')",
+          backgroundColor: '#111'  // fallback in case image fails
+        }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
         
@@ -46,7 +49,7 @@ const Services = () => {
             </p>
           </div>
 
-          {/* Responsive grid: 1 column on mobile, 2 on tablets, 3 on desktops */}
+          {/* Responsive grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
             {services.map((s, idx) => (
               <div key={idx} className="bg-white/40 backdrop-blur-md rounded-2xl p-5 sm:p-6 border border-orange-200/40 shadow-md hover:shadow-xl transition-all hover:border-orange-300/60 group">
@@ -63,7 +66,7 @@ const Services = () => {
             ))}
           </div>
 
-          {/* CTA section – glass style, responsive */}
+          {/* CTA section */}
           <div className="mt-12 sm:mt-16 max-w-4xl mx-auto bg-white/40 backdrop-blur-md rounded-2xl p-6 sm:p-8 text-center border border-orange-200/40 shadow-md">
             <i className="fas fa-stethoscope text-orange-500 text-3xl sm:text-4xl mb-3"></i>
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Not sure what you need?</h2>

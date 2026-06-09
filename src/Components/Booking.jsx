@@ -53,27 +53,30 @@ Please confirm availability.`;
 
   return (
     <div className="min-h-screen">
-      {/* Hero section with background image */}
+      {/* Hero section – responsive padding */}
       <section 
-        className="relative w-full py-24 md:py-32 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+        className="relative w-full py-16 sm:py-24 md:py-32 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: `url(${backgroundImageUrl})`,
+          backgroundColor: '#111' // fallback
+        }}
       >
         <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
             Book a Repair
           </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-200 max-w-2xl mx-auto">
             Same day service – fill the form and we'll confirm via WhatsApp within 30 minutes.
           </p>
         </div>
       </section>
 
-      {/* Booking form – glassmorphism card over the image */}
-      <section className="relative py-20">
+      {/* Booking form – glassmorphism card */}
+      <section className="relative py-16 sm:py-20">
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 container mx-auto px-6 max-w-2xl">
-          <div className="bg-white/40 backdrop-blur-md rounded-3xl shadow-2xl p-8 md:p-12 border border-orange-200/40">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 max-w-2xl">
+          <div className="bg-white/40 backdrop-blur-md rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 border border-orange-200/40">
             {submitted ? (
               <div className="text-center p-6 bg-green-100/80 backdrop-blur-sm rounded-xl text-green-700 border border-green-200">
                 <i className="fas fa-check-circle text-5xl mb-3 text-green-600"></i>
@@ -87,7 +90,7 @@ Please confirm availability.`;
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                 <div>
                   <label className="block font-medium text-gray-700 mb-1">Full Name *</label>
                   <input 
@@ -95,7 +98,7 @@ Please confirm availability.`;
                     name="name" 
                     value={form.name} 
                     onChange={handleChange} 
-                    className="w-full p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition"
+                    className="w-full p-2 sm:p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition text-sm sm:text-base"
                     required 
                   />
                 </div>
@@ -107,7 +110,7 @@ Please confirm availability.`;
                     value={form.phone} 
                     onChange={handleChange} 
                     placeholder="0712345678" 
-                    className="w-full p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition"
+                    className="w-full p-2 sm:p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition text-sm sm:text-base"
                     required 
                   />
                 </div>
@@ -117,7 +120,7 @@ Please confirm availability.`;
                     name="brand" 
                     value={form.brand} 
                     onChange={handleChange} 
-                    className="w-full p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition"
+                    className="w-full p-2 sm:p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition text-sm sm:text-base"
                     required
                   >
                     <option value="">Select Brand</option>
@@ -130,7 +133,7 @@ Please confirm availability.`;
                     name="repairType" 
                     value={form.repairType} 
                     onChange={handleChange} 
-                    className="w-full p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition"
+                    className="w-full p-2 sm:p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition text-sm sm:text-base"
                     required
                   >
                     <option value="">Select Issue</option>
@@ -151,7 +154,7 @@ Please confirm availability.`;
                     value={form.date} 
                     onChange={handleChange} 
                     min={new Date().toISOString().split('T')[0]}
-                    className="w-full p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition"
+                    className="w-full p-2 sm:p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition text-sm sm:text-base"
                     required 
                   />
                 </div>
@@ -163,13 +166,13 @@ Please confirm availability.`;
                     value={form.notes} 
                     onChange={handleChange} 
                     placeholder="e.g., phone model, specific issue, preferred time..."
-                    className="w-full p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition"
+                    className="w-full p-2 sm:p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition text-sm sm:text-base"
                   />
                 </div>
                 <button 
                   type="submit" 
                   disabled={loading}
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl text-lg transition shadow-md disabled:opacity-70"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 sm:py-3 rounded-xl text-base sm:text-lg transition shadow-md disabled:opacity-70"
                 >
                   {loading ? <i className="fas fa-spinner fa-spin mr-2"></i> : null}
                   {loading ? 'Processing...' : 'Submit Booking via WhatsApp'}

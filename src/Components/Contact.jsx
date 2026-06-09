@@ -86,7 +86,7 @@ Please reply to this inquiry.`;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      {/* Hero section – using external Unsplash (always reliable) */}
+      {/* Hero section */}
       <section 
         className="relative w-full py-16 sm:py-24 md:py-32 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1592899677977-9e10ca588f9d?auto=format&fit=crop&w=2070&q=80')" }}
@@ -107,15 +107,14 @@ Please reply to this inquiry.`;
         className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat"
         style={{ 
           backgroundImage: "url('/static/logo3.jpeg')",
-          backgroundBlendMode: 'overlay'
+          backgroundColor: '#1a1a1a'   // fallback dark color
         }}
       >
-        {/* Fallback background color if image fails to load */}
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative z-10 container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
             
-            {/* Contact information card */}
+            {/* Contact info card */}
             <div className="bg-white/40 backdrop-blur-md rounded-2xl p-5 sm:p-8 border border-orange-200/40 shadow-md">
               <div className="flex items-center gap-3 mb-6">
                 <i className="fas fa-map-marker-alt text-orange-500 text-2xl"></i>

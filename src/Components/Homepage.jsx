@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-// ---------- HERO CAROUSEL (with local images & mobile optimization) ----------
+// ---------- HERO CAROUSEL (with corrected image paths) ----------
 const slides = [
-  { id: 1, title: "We Come to You – Free Pickup & Delivery", button: "Contact Us", action: "contact", bg: "/static/logo4.jpeg" },
-  { id: 2, title: "Same Day Repair – Phone Back Within 24h", button: "Book Now", action: "booking", bg: "/static/logo2.png" },
-  { id: 3, title: "Just Pin Your Location & We Collect", button: "About Us", action: "about", bg: "/static/logo3.jpeg" },
-  { id: 4, title: "No Shop Visit Needed – Nairobi Only", button: "Quote", action: "quote", bg: "/static/logo1.png" }
+  { id: 1, title: "We Come to You – Free Pickup & Delivery", button: "Contact Us", action: "contact", bg: "/static/logo4.jpeg" },   // exists
+  { id: 2, title: "Same Day Repair – Phone Back Within 24h", button: "Book Now", action: "booking", bg: "/static/logo2.png" },     // exists
+  { id: 3, title: "Just Pin Your Location & We Collect", button: "About Us", action: "about", bg: "/static/logo.3.jpeg" },        // ✅ fixed: dot before 3
+  { id: 4, title: "No Shop Visit Needed – Nairobi Only", button: "Quote", action: "quote", bg: "/static/logo1.png" }              // exists
 ];
 
 const HeroCarousel = ({ onQuoteClick }) => {
@@ -90,7 +90,7 @@ const QuoteModal = ({ isOpen, onClose }) => {
   );
 };
 
-// ---------- FEATURE SECTION (responsive grid) ----------
+// ---------- FEATURE SECTION (unchanged, responsive) ----------
 const ImageBackgroundSection = () => {
   const backgroundImageUrl = "https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=2070&q=80";
   return (
@@ -159,7 +159,7 @@ const StatsSection = () => {
   );
 };
 
-// ---------- PICKUP SERVICE (responsive) ----------
+// ---------- PICKUP SERVICE (unchanged) ----------
 const PickupService = () => {
   return (
     <section className="py-16 sm:py-20 bg-gradient-to-r from-orange-500 to-orange-700 text-white">
@@ -190,7 +190,7 @@ const PickupService = () => {
   );
 };
 
-// ---------- REPAIR PROCESS (unchanged but responsive) ----------
+// ---------- REPAIR PROCESS (unchanged) ----------
 const RepairProcess = () => {
   const steps = [
     { icon: "fas fa-phone-alt", title: "Call or WhatsApp", desc: "Describe the issue, share your location (Nairobi only)" },
@@ -217,7 +217,7 @@ const RepairProcess = () => {
   );
 };
 
-// ---------- BRANDS WE REPAIR (responsive) ----------
+// ---------- BRANDS WE REPAIR (unchanged) ----------
 const BrandsRepair = () => {
   const brands = ["Apple", "Samsung", "Huawei", "Tecno", "Infinix", "Oppo", "Xiaomi"];
   const icons = ["fab fa-apple", "fab fa-samsung", "fab fa-huawei", "fas fa-microchip", "fas fa-microchip", "fab fa-opera", "fab fa-xiaomi"];
