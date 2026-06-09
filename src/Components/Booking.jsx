@@ -49,7 +49,7 @@ Please confirm availability.`;
     }, 5000);
   };
 
-  const backgroundImageUrl = "/static/logo6.jpg";
+  const backgroundImageUrl = "/Static/logo6.jpg";
 
   return (
     <div className="min-h-screen">

@@ -14,7 +14,7 @@ const Header = () => {
         <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group" onClick={closeMenu}>
           <div className="bg-white/60 backdrop-blur-sm p-1.5 rounded-2xl border border-orange-200/50 transition-all duration-300 group-hover:border-orange-300 group-hover:bg-white/80">
             <img 
-              src="/static/logo.png" 
+              src="/Static/logo.png" 
               alt="Same Day Mobile Solutions" 
               className="h-8 w-auto sm:h-10 md:h-12 object-contain transition-transform duration-300 group-hover:scale-105" 
             />

@@ -98,7 +98,7 @@ const About = () => {
       <section 
         className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: "url('/static/logo7.jpg')",
+          backgroundImage: "url('/Static/logo7.jpg')",
           backgroundColor: '#1a1a1a' // fallback dark color
         }}
       >

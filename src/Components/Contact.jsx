@@ -106,7 +106,7 @@ Please reply to this inquiry.`;
       <section 
         className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: "url('/static/logo3.jpeg')",
+          backgroundImage: "url('/Static/logo3.jpeg')",
           backgroundColor: '#1a1a1a'   // fallback dark color
         }}
       >

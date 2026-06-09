@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 // ---------- HERO CAROUSEL (with corrected image paths) ----------
 const slides = [
-  { id: 1, title: "We Come to You – Free Pickup & Delivery", button: "Contact Us", action: "contact", bg: "/static/logo4.jpeg" },   // exists
-  { id: 2, title: "Same Day Repair – Phone Back Within 24h", button: "Book Now", action: "booking", bg: "/static/logo2.png" },     // exists
-  { id: 3, title: "Just Pin Your Location & We Collect", button: "About Us", action: "about", bg: "/static/logo.3.jpeg" },        // ✅ fixed: dot before 3
-  { id: 4, title: "No Shop Visit Needed – Nairobi Only", button: "Quote", action: "quote", bg: "/static/logo1.png" }              // exists
+  { id: 1, title: "We Come to You – Free Pickup & Delivery", button: "Contact Us", action: "contact", bg: "/Static/logo4.jpeg" },   // exists
+  { id: 2, title: "Same Day Repair – Phone Back Within 24h", button: "Book Now", action: "booking", bg: "/Static/logo2.png" },     // exists
+  { id: 3, title: "Just Pin Your Location & We Collect", button: "About Us", action: "about", bg: "/Static/logo.3.jpeg" },        // ✅ fixed: dot before 3
+  { id: 4, title: "No Shop Visit Needed – Nairobi Only", button: "Quote", action: "quote", bg: "/Static/logo1.png" }              // exists
 ];
 
 const HeroCarousel = ({ onQuoteClick }) => {

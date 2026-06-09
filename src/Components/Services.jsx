@@ -32,7 +32,7 @@ const Services = () => {
       <section 
         className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: "url('/static/logo.5.jpeg')",
+          backgroundImage: "url('/Static/logo.5.jpeg')",
           backgroundColor: '#111'  // fallback in case image fails
         }}
       >
