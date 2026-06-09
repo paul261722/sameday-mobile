@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white/40 backdrop-blur-md border-b border-orange-200/50 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-        {/* Logo – responsive sizing */}
+        {/* Logo – now visible on all screens */}
         <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group" onClick={closeMenu}>
           <div className="bg-white/60 backdrop-blur-sm p-1.5 rounded-2xl border border-orange-200/50 transition-all duration-300 group-hover:border-orange-300 group-hover:bg-white/80">
             <img 
@@ -19,10 +19,17 @@ const Header = () => {
               className="h-8 w-auto sm:h-10 md:h-12 object-contain transition-transform duration-300 group-hover:scale-105" 
             />
           </div>
-          <div className="font-bold text-lg sm:text-xl md:text-2xl tracking-tight hidden sm:block">
-            <span className="text-gray-700 group-hover:text-gray-900 transition">SAMEDAY</span>
-            <span className="text-orange-500 group-hover:text-orange-600 transition"> MOBILE</span>
-            <div className="text-xs font-normal text-gray-500 -mt-1">SOLUTIONS</div>
+          {/* Brand name – now always visible, with responsive text size */}
+          <div className="block font-bold tracking-tight">
+            <span className="text-gray-700 group-hover:text-gray-900 transition text-xs sm:text-lg md:text-xl">
+              SAMEDAY
+            </span>
+            <span className="text-orange-500 group-hover:text-orange-600 transition text-xs sm:text-lg md:text-xl">
+              {' '}MOBILE
+            </span>
+            <div className="text-[10px] sm:text-xs font-normal text-gray-500 -mt-0.5 sm:-mt-1">
+              SOLUTIONS
+            </div>
           </div>
         </Link>
 
