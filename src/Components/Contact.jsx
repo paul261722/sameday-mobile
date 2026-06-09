@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -8,6 +8,25 @@ const Contact = () => {
   const mapInstanceRef = useRef(null);
 
   const shopCoords = [-1.2860, 36.8225];
+
+  const initMap = useCallback((L) => {
+    if (mapInstanceRef.current || !mapRef.current) return;
+    const map = L.map(mapRef.current).setView(shopCoords, 16);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; CartoDB',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+    L.marker(shopCoords).addTo(map)
+      .bindPopup(`
+        <b>Same Day Mobile Solutions</b><br />
+        Nyanza House, 1st Floor Shop F17<br />
+        Junction of Gaberon Road & Mfangano Lane<br />
+        Nairobi
+      `)
+      .openPopup();
+    mapInstanceRef.current = map;
+  }, [shopCoords]);
 
   useEffect(() => {
     if (window.L) {
@@ -32,26 +51,7 @@ const Contact = () => {
       };
       document.body.appendChild(script);
     }
-  }, []);
-
-  const initMap = (L) => {
-    if (mapInstanceRef.current || !mapRef.current) return;
-    const map = L.map(mapRef.current).setView(shopCoords, 16);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; CartoDB',
-      subdomains: 'abcd',
-      maxZoom: 19
-    }).addTo(map);
-    L.marker(shopCoords).addTo(map)
-      .bindPopup(`
-        <b>Same Day Mobile Solutions</b><br />
-        Nyanza House, 1st Floor Shop F17<br />
-        Junction of Gaberon Road & Mfangano Lane<br />
-        Nairobi
-      `)
-      .openPopup();
-    mapInstanceRef.current = map;
-  };
+  }, [initMap]);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -214,7 +214,7 @@ Please reply to this inquiry.`;
         </div>
       </section>
 
-      {/* Map section – unchanged, without background image */}
+      {/* Map section – unchanged */}
       <section className="py-20 container mx-auto px-6">
         <div className="max-w-6xl mx-auto bg-white/40 backdrop-blur-md rounded-2xl p-4 border border-orange-200/40 shadow-md">
           <div ref={mapRef} className="h-80 w-full rounded-xl overflow-hidden"></div>

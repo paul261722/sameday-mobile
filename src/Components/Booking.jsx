@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const Booking = () => {
   const [form, setForm] = useState({ 
@@ -50,12 +49,11 @@ Please confirm availability.`;
     }, 5000);
   };
 
-  // New background image – using local logo6.jpg
   const backgroundImageUrl = "/static/logo6.jpg";
 
   return (
     <div className="min-h-screen">
-      {/* Full‑width background image with overlay and text */}
+      {/* Hero section with background image */}
       <section 
         className="relative w-full py-24 md:py-32 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${backgroundImageUrl})` }}
