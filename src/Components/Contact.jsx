@@ -1,7 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-
-// Define shopCoords outside the component – it never changes
-const shopCoords = [-1.2860, 36.8225];
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -9,6 +6,9 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
+
+  // Memoize shopCoords to make it stable and satisfy ESLint
+  const shopCoords = useMemo(() => [-1.2860, 36.8225], []);
 
   const initMap = useCallback((L) => {
     if (mapInstanceRef.current || !mapRef.current) return;
@@ -27,7 +27,7 @@ const Contact = () => {
       `)
       .openPopup();
     mapInstanceRef.current = map;
-  }, []); // Empty dependency array because shopCoords is now stable outside
+  }, [shopCoords]); // ✅ shopCoords is now stable because of useMemo
 
   useEffect(() => {
     if (window.L) {
