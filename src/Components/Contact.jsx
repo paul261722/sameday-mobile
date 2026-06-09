@@ -7,7 +7,6 @@ const Contact = () => {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
 
-  // Memoize shopCoords to make it stable and satisfy ESLint
   const shopCoords = useMemo(() => [-1.2860, 36.8225], []);
 
   const initMap = useCallback((L) => {
@@ -27,7 +26,7 @@ const Contact = () => {
       `)
       .openPopup();
     mapInstanceRef.current = map;
-  }, [shopCoords]); // ✅ shopCoords is now stable because of useMemo
+  }, [shopCoords]);
 
   useEffect(() => {
     if (window.L) {
@@ -87,37 +86,42 @@ Please reply to this inquiry.`;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      {/* Hero section with background image */}
+      {/* Hero section – using external Unsplash (always reliable) */}
       <section 
-        className="relative w-full py-24 md:py-32 bg-cover bg-center bg-no-repeat"
+        className="relative w-full py-16 sm:py-24 md:py-32 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1592899677977-9e10ca588f9d?auto=format&fit=crop&w=2070&q=80')" }}
       >
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
             Contact Us
           </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-200 max-w-2xl mx-auto">
             We're here to help. Visit our shop, call, or WhatsApp – we're ready to fix your device.
           </p>
         </div>
       </section>
 
-      {/* "Visit Our Workshop" section – background image logo3.jpeg with overlay */}
+      {/* "Visit Our Workshop" section – background image with fallback */}
       <section 
-        className="relative py-20 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/static/logo3.jpeg')" }}
+        className="relative py-16 sm:py-20 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: "url('/static/logo3.jpeg')",
+          backgroundBlendMode: 'overlay'
+        }}
       >
+        {/* Fallback background color if image fails to load */}
         <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative z-10 container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+            
             {/* Contact information card */}
-            <div className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-orange-200/40 shadow-md">
+            <div className="bg-white/40 backdrop-blur-md rounded-2xl p-5 sm:p-8 border border-orange-200/40 shadow-md">
               <div className="flex items-center gap-3 mb-6">
                 <i className="fas fa-map-marker-alt text-orange-500 text-2xl"></i>
-                <h2 className="text-2xl font-bold text-gray-800">Visit Our Workshop</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Visit Our Workshop</h2>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-4 text-sm sm:text-base">
                 <div className="flex items-start gap-3 text-gray-600">
                   <i className="fas fa-location-dot text-orange-500 w-5 mt-1"></i>
                   <span>
@@ -141,7 +145,7 @@ Please reply to this inquiry.`;
               </div>
               <div className="mt-8 pt-6 border-t border-orange-200/30">
                 <h3 className="font-bold text-gray-800 mb-3">Opening Hours</h3>
-                <div className="space-y-1 text-gray-600">
+                <div className="space-y-1 text-gray-600 text-sm">
                   <p>Mon-Fri: 8:00 AM – 7:00 PM</p>
                   <p>Sat: 9:00 AM – 5:00 PM</p>
                   <p className="text-orange-500">Sun: Closed (emergency repairs via WhatsApp only)</p>
@@ -149,14 +153,14 @@ Please reply to this inquiry.`;
               </div>
             </div>
 
-            {/* Contact form card – sends via WhatsApp */}
-            <div className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-orange-200/40 shadow-md">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            {/* Contact form card */}
+            <div className="bg-white/40 backdrop-blur-md rounded-2xl p-5 sm:p-8 border border-orange-200/40 shadow-md">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <i className="fas fa-paper-plane text-orange-500"></i>
                 Send a Message
               </h2>
               {sent && (
-                <div className="bg-green-100/80 backdrop-blur-sm text-green-700 p-3 rounded-xl mb-4 border border-green-200">
+                <div className="bg-green-100/80 backdrop-blur-sm text-green-700 p-3 rounded-xl mb-4 border border-green-200 text-sm">
                   <i className="fas fa-check-circle mr-2"></i> Message opened in WhatsApp – just send it and we'll reply soon.
                 </div>
               )}
@@ -169,7 +173,7 @@ Please reply to this inquiry.`;
                     placeholder="John Doe" 
                     value={form.name} 
                     onChange={handleChange} 
-                    className="w-full p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition"
+                    className="w-full p-2 sm:p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition text-sm sm:text-base"
                     required 
                   />
                 </div>
@@ -181,7 +185,7 @@ Please reply to this inquiry.`;
                     placeholder="hello@example.com" 
                     value={form.email} 
                     onChange={handleChange} 
-                    className="w-full p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition"
+                    className="w-full p-2 sm:p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition text-sm sm:text-base"
                     required 
                   />
                 </div>
@@ -193,14 +197,14 @@ Please reply to this inquiry.`;
                     placeholder="Describe your issue or question..." 
                     value={form.message} 
                     onChange={handleChange} 
-                    className="w-full p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition"
+                    className="w-full p-2 sm:p-3 bg-white/50 border border-orange-200/50 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 transition text-sm sm:text-base"
                     required
                   />
                 </div>
                 <button 
                   type="submit" 
                   disabled={loading}
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold transition shadow-md disabled:opacity-70"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 sm:py-3 rounded-xl font-semibold transition shadow-md disabled:opacity-70 text-sm sm:text-base"
                 >
                   {loading ? <i className="fas fa-spinner fa-spin mr-2"></i> : null}
                   {loading ? 'Processing...' : 'Send Message via WhatsApp'}
@@ -215,17 +219,17 @@ Please reply to this inquiry.`;
         </div>
       </section>
 
-      {/* Map section – unchanged */}
-      <section className="py-20 container mx-auto px-6">
-        <div className="max-w-6xl mx-auto bg-white/40 backdrop-blur-md rounded-2xl p-4 border border-orange-200/40 shadow-md">
-          <div ref={mapRef} className="h-80 w-full rounded-xl overflow-hidden"></div>
+      {/* Map section */}
+      <section className="py-16 sm:py-20 container mx-auto px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto bg-white/40 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-orange-200/40 shadow-md">
+          <div ref={mapRef} className="h-64 sm:h-80 w-full rounded-xl overflow-hidden"></div>
           <div className="text-center text-xs text-gray-500 mt-2">
             <i className="fas fa-location-dot text-orange-400 mr-1"></i> 
             Nyanza House, 1st Floor Shop F17 – Junction of Gaberon Road & Mfangano Lane, Nairobi
           </div>
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-6 sm:mt-8 text-center">
           <a 
             href={`https://www.google.com/maps/dir/?api=1&destination=${shopCoords[0]},${shopCoords[1]}`}
             target="_blank"
