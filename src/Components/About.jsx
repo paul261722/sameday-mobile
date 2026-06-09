@@ -37,7 +37,7 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 text-center">
           <div className="mb-6 sm:mb-8 flex justify-center">
             <img 
-              src="/static/logo.png" 
+              src="/Static/logo.png" 
               alt="Same Day Mobile Solutions" 
               className="w-24 sm:w-32 md:w-48 h-auto object-contain"
             />
