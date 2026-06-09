@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
+// Define shopCoords outside the component – it never changes
+const shopCoords = [-1.2860, 36.8225];
+
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
-
-  const shopCoords = [-1.2860, 36.8225];
 
   const initMap = useCallback((L) => {
     if (mapInstanceRef.current || !mapRef.current) return;
@@ -26,7 +27,7 @@ const Contact = () => {
       `)
       .openPopup();
     mapInstanceRef.current = map;
-  }, [shopCoords]);
+  }, []); // Empty dependency array because shopCoords is now stable outside
 
   useEffect(() => {
     if (window.L) {
